@@ -1,12 +1,14 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Globe } from "lucide-react";
+import { Globe, Shield } from "lucide-react";
+import { Link } from "react-router-dom";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
+  DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
 import { Language } from "@/lib/types";
 
@@ -46,6 +48,16 @@ const LocaleSelector = ({ currentLocale, onLocaleChange }: LocaleSelectorProps) 
           onClick={() => onLocaleChange("en")}
         >
           English 🇬🇧
+        </DropdownMenuItem>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem
+          className="cursor-pointer px-4 py-2"
+          asChild
+        >
+          <Link to="/admin" className="flex items-center w-full">
+            <Shield size={16} className="mr-2" />
+            {currentLocale === "fr" ? "Administration" : "Admin"}
+          </Link>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
